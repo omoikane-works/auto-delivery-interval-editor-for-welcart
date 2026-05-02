@@ -1,0 +1,38 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "welcart",
+    "kimikato",
+    "kiminori",
+    "KATO",
+    "omoikane",
+    "WCEX",
+    "wpcs",
+    "wcad",
+    "phpcompatibility",
+    "szepeviktor",
+    "squizlabs",
+    "codesniffer",
+    "analyse",
+    "dealerdirect",
+    "phpcodesniffer",
+    "phpunit",
+    "phpcs",
+    "phpcbf",
+    "phpstan",
+    "makepot",
+    "vite",
+    "yarnrc",
+    "ntvs",
+    "njsproj",
+    "ABSPATH",
+    "ADIE",
+    "unslash",
+    "absint",
+    "regulardetaildata",
+    "regdet"
+  ],
+  "ignorePaths": [
+  ]
+}

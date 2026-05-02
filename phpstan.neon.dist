@@ -1,0 +1,19 @@
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+    level: 8
+
+    paths:
+        - auto-delivery-interval-editor-for-welcart.php
+        - includes
+
+    bootstrapFiles:
+        - vendor/szepeviktor/phpstan-wordpress/bootstrap.php
+
+    scanFiles:
+        - auto-delivery-interval-editor-for-welcart.php
+
+    excludePaths:
+        analyse:
+            - vendor

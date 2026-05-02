@@ -1,0 +1,54 @@
+{
+    "name": "omoikane-works/auto-delivery-interval-editor-for-welcart",
+    "description": "Allows administrators to edit regular purchase intervals for WCEX Auto Delivery subscriptions.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Omoikane Works",
+            "homepage": "https://github.com/omoikane-works"
+        },
+        {
+            "name": "Kiminori KATO",
+            "email": "kimikato@morgenrot.in"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.2"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^2.1",
+        "szepeviktor/phpstan-wordpress": "^2.0",
+        "squizlabs/php_codesniffer": "^3.11",
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.1",
+        "wp-coding-standards/wpcs": "^3.1",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "wp-cli/i18n-command": "^2.6"
+    },
+    "scripts": {
+        "lint": "find includes -name '*.php' -print0 | xargs -0 -n1 php -l && php -l auto-delivery-interval-editor-for-welcart.php",
+        "phpcs": "phpcs -s auto-delivery-interval-editor-for-welcart.php includes",
+        "phpcbf": "phpcbf auto-delivery-interval-editor-for-welcart.php includes",
+        "phpstan": "phpstan analyse --memory-limit=1G",
+        "makepot": "wp i18n make-pot . languages/auto-delivery-interval-editor-for-welcart.pot --exclude=node_modules,vendor,tests"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "sort-packages": true
+    },
+    "extra": {
+        "phpcodesniffer-composer-installer": {
+            "includes": [
+                "wp-coding-standards/wpcs",
+                "phpcompatibility/php-compatibility",
+                "phpcompatibility/phpcompatibility-wp"
+            ]
+        }
+    }
+}

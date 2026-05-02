@@ -1,0 +1,69 @@
+name: Build Release Zip
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    name: Build release zip
+    runs-on: ubuntu-latest
+
+    env:
+      PLUGIN_SLUG: auto-delivery-interval-editor-for-welcart
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Extract version
+        id: version
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare release directory
+        run: |
+          mkdir -p "release/${PLUGIN_SLUG}"
+
+          rsync -av \
+            --exclude=".git" \
+            --exclude=".github" \
+            --exclude=".editorconfig" \
+            --exclude=".gitattributes" \
+            --exclude=".gitignore" \
+            --exclude=".vscode" \
+            --exclude=".idea" \
+            --exclude=".obsidian" \
+            --exclude=".DS_Store" \
+            --exclude="Thumbs.db" \
+            --exclude="vendor" \
+            --exclude="node_modules" \
+            --exclude="dist" \
+            --exclude="build" \
+            --exclude="composer.lock" \
+            --exclude="phpcs.xml" \
+            --exclude="phpcs.xml.dist" \
+            --exclude="phpstan.neon" \
+            --exclude="phpstan.neon.dist" \
+            --exclude="cspell.json" \
+            --exclude="*.zip" \
+            ./ "release/${PLUGIN_SLUG}/"
+
+      - name: Create zip
+        run: |
+          cd release
+          zip -r "../${PLUGIN_SLUG}-${{ steps.version.outputs.version }}.zip" "${PLUGIN_SLUG}"
+
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${GITHUB_REF_NAME}" \
+            "${PLUGIN_SLUG}-${{ steps.version.outputs.version }}.zip" \
+            --title "${GITHUB_REF_NAME}" \
+            --notes "Release ${GITHUB_REF_NAME}"
