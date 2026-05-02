@@ -28,6 +28,7 @@ jobs:
 
       - name: Prepare release directory
         run: |
+          rm -rf release
           mkdir -p "release/${PLUGIN_SLUG}"
 
           rsync -av \
@@ -45,6 +46,8 @@ jobs:
             --exclude="node_modules" \
             --exclude="dist" \
             --exclude="build" \
+            --exclude="release" \
+            --exclude="release/" \
             --exclude="composer.lock" \
             --exclude="phpcs.xml" \
             --exclude="phpcs.xml.dist" \
