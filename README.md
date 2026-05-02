@@ -17,17 +17,19 @@ Auto Delivery Interval Editor for Welcart は、Welcart 拡張プラグインで
 
 ## 必要環境
 
-- WordPress 6.4 以上
+- WordPress 6.6 以上
 - PHP 8.2 以上
 - Welcart 2.11.4 以上
 - WCEX Auto Delivery 1.7.5 以上
 
 ## インストール
 
-1. GitHub Releases から最新版の zip ファイルをダウンロードします
+1. GitHub Releases の Assets から `auto-delivery-interval-editor-for-welcart-x.x.x.zip` をダウンロードします
 2. WordPress 管理画面の「プラグイン > 新規追加 > プラグインのアップロード」から zip ファイルをアップロードします
 3. プラグインを有効化します
 4. Welcart および WCEX Auto Delivery が有効化されていることを確認します
+
+`Source code (zip)` ではなく、配布用 zip の利用を推奨します。
 
 ## 注意事項
 
